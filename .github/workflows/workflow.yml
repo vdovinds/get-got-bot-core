@@ -16,6 +16,6 @@ jobs:
         runtime: 'python311'
         memory: '128'
         entrypoint: 'handler.handler'
-        environment: PRIVATE_KEY=${{ secrets.PRIVATE_KEY }},PRIVATE_KEY_ID=${{ secrets.PRIVATE_KEY_ID }}
+        environment: FB_PRIVATE_KEY=${{ secrets.PRIVATE_KEY }},FB_PRIVATE_KEY_ID=${{ secrets.PRIVATE_KEY_ID }}
         source: '.'
         exclude: '.git,.github'
