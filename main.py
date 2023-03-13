@@ -5,14 +5,21 @@ from firebase_admin import credentials
 from firebase_admin import db
 
 
-key = os.environ.get('FIREBASE_KEY')
-json_object = json.dumps(json.loads(key), indent=4)
-with open("key.json", "w") as outfile:
-    outfile.write(json_object)
+private_key_id = os.environ.get('PRIVATE_KEY_ID')
+private_key = os.environ.get('PRIVATE_KEY')
 
-#cred = credentials.Certificate("get-got-bot-firebase-adminsdk-6m5xd-a9b647bce5.json")
+with open("key.json") as json_file:
+    key_file = json.load(json_file)
+    json_file.close()
+
+with open("key.json", "w", encoding='utf-8') as json_file:
+    key_file['private_key_id'] = private_key_id
+    json_object = json.dumps(key_file, ensure_ascii=False, indent=4)
+    json_file.write(json_object)
+    json_file.close()
+
 cred = credentials.Certificate("key.json")
-app = firebase_admin.initialize_app(cred, {
+firebase_admin.initialize_app(cred, {
     'databaseURL': "https://get-got-bot-default-rtdb.europe-west1.firebasedatabase.app/e"
 })
 
