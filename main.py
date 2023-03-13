@@ -14,6 +14,7 @@ with open("key.json") as json_file:
 
 with open("/tmp/key.json", "w", encoding='utf-8') as json_file:
     key_file['private_key_id'] = private_key_id
+    key_file['private_key'] = private_key
     json_object = json.dumps(key_file, ensure_ascii=False, indent=4)
     json_file.write(json_object)
     json_file.close()
