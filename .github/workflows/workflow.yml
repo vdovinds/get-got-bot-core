@@ -18,3 +18,4 @@ jobs:
         entrypoint: 'handler.handler'
         environment: test="test"
         source: '.'
+        exclude: '.git,.github'
