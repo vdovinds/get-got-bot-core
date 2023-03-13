@@ -7,6 +7,11 @@ def handler(event, context):
 
     return {
         'statusCode': 200,
-        #'body': json.dumps(params),
-        'body': "ok",
+        'body': json.dumps(params),
     }
+
+
+# For local testing only
+if __name__ == '__main__':
+    test = [{'a': "va"}, {'b': "vb"}, {'c': "vc"}]
+    print(test)
