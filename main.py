@@ -5,8 +5,8 @@ from firebase_admin import credentials
 from firebase_admin import db
 
 
-private_key_id = os.environ.get('PRIVATE_KEY_ID')
-private_key = os.environ.get('PRIVATE_KEY')
+private_key_id = os.environ.get('FB_PRIVATE_KEY_ID')
+private_key = os.environ.get('FB_PRIVATE_KEY')
 
 with open("key.json") as json_file:
     key_file = json.load(json_file)
