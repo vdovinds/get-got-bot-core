@@ -16,5 +16,5 @@ jobs:
         runtime: 'python311'
         memory: '128'
         entrypoint: 'handler.handler'
-        #environment: ''
+        environment: ''
         source: '.'
