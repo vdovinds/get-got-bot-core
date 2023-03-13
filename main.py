@@ -12,7 +12,7 @@ with open("key.json") as json_file:
     key_file = json.load(json_file)
     json_file.close()
 
-with open("key.json", "w", encoding='utf-8') as json_file:
+with open("/tmp/key.json", "w", encoding='utf-8') as json_file:
     key_file['private_key_id'] = private_key_id
     json_object = json.dumps(key_file, ensure_ascii=False, indent=4)
     json_file.write(json_object)
