@@ -1,14 +1,12 @@
-import json
+import main
 
 
 def handler(event, context):
-    httpMethod = event["httpMethod"]
     params = event["queryStringParameters"]
-    response_body = ''
 
     match params["action"]:
         case 'poem':
-            response_body = 'get poem'
+            response_body = main.get_poem(1, 1)
         case 'task':
             response_body = 'get new task'
         case 'check':
@@ -18,7 +16,7 @@ def handler(event, context):
 
     return {
         'statusCode': 200,
-        'body': json.dumps(response_body),
+        'body': response_body,
     }
 
 
