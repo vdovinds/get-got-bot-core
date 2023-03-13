@@ -18,7 +18,7 @@ with open("/tmp/key.json", "w", encoding='utf-8') as json_file:
     json_file.write(json_object)
     json_file.close()
 
-cred = credentials.Certificate("key.json")
+cred = credentials.Certificate("/tmp/key.json")
 firebase_admin.initialize_app(cred, {
     'databaseURL': "https://get-got-bot-default-rtdb.europe-west1.firebasedatabase.app/e"
 })
