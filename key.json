@@ -1,8 +1,8 @@
 {
     "type": "service_account",
     "project_id": "get-got-bot",
-    "private_key_id": "change-it",
-    "private_key": "change-it",
+    "private_key_id": "CHANGE_IT",
+    "private_key": "CHANGE_IT",
     "client_email": "firebase-adminsdk-6m5xd@get-got-bot.iam.gserviceaccount.com",
     "client_id": "114910932782573585869",
     "auth_uri": "https://accounts.google.com/o/oauth2/auth",
