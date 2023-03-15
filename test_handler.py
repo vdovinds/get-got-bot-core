@@ -38,6 +38,7 @@ class TestHandlerMethods(unittest.TestCase):
         self.assertTrue('first' in result['body'])
         self.assertTrue('second' in result['body'])
         self.assertTrue('third' in result['body'])
+        self.assertTrue('expected_verb_form' in result['body'])
 
 
 if __name__ == '__main__':

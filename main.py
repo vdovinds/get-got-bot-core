@@ -37,8 +37,14 @@ def issue_task(user_type, user_id):
     poem = get_random_poem()
 
     expected_verb_form = random.choice(['first', 'second', 'third'])
-    task = {"first": poem['first'], "second": poem['second'], "third": poem['third'], "ru": poem['ru'],
-            expected_verb_form: "?"}
+    task = {
+        "first": poem['first'],
+        "second": poem['second'],
+        "third": poem['third'],
+        "ru": poem['ru'],
+        "expected_verb_form": expected_verb_form,
+        expected_verb_form: ""
+    }
 
     db.reference("/users").child(f"{user_type}_{user_id}").update(
         {
