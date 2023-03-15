@@ -18,6 +18,7 @@ class TestHandlerMethods(unittest.TestCase):
         self.assertEqual(result['statusCode'], 200)
         self.assertTrue('body' in result)
         self.assertTrue('poem' in result['body'])
+        self.assertTrue('poem_template' in result['body'])
         self.assertTrue('first' in result['body'])
         self.assertTrue('second' in result['body'])
         self.assertTrue('third' in result['body'])
