@@ -6,7 +6,6 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
 
-
 private_key_id = os.environ.get('FB_PRIVATE_KEY_ID')
 private_key = ast.literal_eval(os.environ.get('FB_PRIVATE_KEY'))
 
@@ -32,3 +31,21 @@ def get_random_poem():
     poem = random.choice(verbs)
 
     return poem
+
+
+def issue_task(user_type, user_id):
+    poem = get_random_poem()
+
+    expected_verb_form = random.choice(['first', 'second', 'third'])
+    task = {"first": poem['first'], "second": poem['second'], "third": poem['third'], "ru": poem['ru'],
+            expected_verb_form: "?"}
+
+    db.reference("/users").child(f"{user_type}_{user_id}").update(
+        {
+            "current_poem": poem,
+            "expected_answer": poem[expected_verb_form],
+            "expected_verb_form": expected_verb_form
+        }
+    )
+
+    return task

@@ -24,6 +24,21 @@ class TestHandlerMethods(unittest.TestCase):
         self.assertTrue('third' in result['body'])
         self.assertTrue('ru' in result['body'])
 
+    def test_should_issue_task(self):
+        evenWithTaskAction = {
+            'queryStringParameters': {
+                'action': 'task',
+                'user_id': '12345',
+                'user_type': 'test'
+            }
+        }
+        result = handler.handler(evenWithTaskAction, '')
+        self.assertEqual(result['statusCode'], 200)
+        self.assertTrue('ru' in result['body'])
+        self.assertTrue('first' in result['body'])
+        self.assertTrue('second' in result['body'])
+        self.assertTrue('third' in result['body'])
+
 
 if __name__ == '__main__':
     unittest.main()
