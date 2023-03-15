@@ -5,16 +5,16 @@ import main
 
 def handler(event, context):
     params = event["queryStringParameters"]
-    user_type = params["user_type"]
-    user_id = params["user_id"]
 
     match params["action"]:
         case 'poem':
             return create_ok_response(main.get_random_poem())
         case 'task':
-            return create_ok_response(main.issue_task(user_type, user_id))
+            return create_ok_response(main.issue_task(params["user_type"], params["user_id"]))
         case 'check':
-            return create_ok_response('check')
+            return create_ok_response(main.check_task(params["user_type"], params["user_id"], params["answer"]))
+        case 'answer':
+            return create_ok_response(main.get_task_answer(params["user_type"], params["user_id"]))
         case _:
             return create_not_found_response('unknown request type')
 

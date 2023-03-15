@@ -55,3 +55,15 @@ def issue_task(user_type, user_id):
     )
 
     return task
+
+
+def check_task(user_type, user_id, answer):
+    expected_answer = db.reference("/users").child(f"{user_type}_{user_id}").child("expected_answer").get()
+
+    return {
+        "result": str(answer).lower() == str(expected_answer).lower()
+    }
+
+
+def get_task_answer(user_type, user_id):
+    return db.reference("/users").child(f"{user_type}_{user_id}").child("current_poem").get()
