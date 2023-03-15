@@ -1,3 +1,5 @@
+import json
+
 import main
 
 
@@ -6,20 +8,24 @@ def handler(event, context):
 
     match params["action"]:
         case 'poem':
-            response_body = main.get_poem(1, 1)
+            return create_ok_response(main.get_random_poem())
         case 'task':
-            response_body = 'get new task'
+            return create_ok_response('task')
         case 'check':
-            response_body = 'check answer'
+            return create_ok_response('check')
         case _:
-            response_body = 'unknown request type'
+            return create_not_found_response('unknown request type')
 
+
+def create_ok_response(body):
     return {
         'statusCode': 200,
-        'body': response_body,
+        'body': json.dumps(body, ensure_ascii=False, indent=4),
     }
 
 
-# For local testing only
-# if __name__ == '__main__':
-    # test = {"action": "poem", "answer": "get", "user_id": "12345", "user_type": "tg"}
+def create_not_found_response(text):
+    return {
+        'statusCode': 404,
+        'body': json.dumps(text),
+    }

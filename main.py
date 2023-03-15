@@ -1,6 +1,7 @@
 import os
 import json
 import ast
+import random
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
@@ -26,6 +27,8 @@ firebase_admin.initialize_app(cred, {
 })
 
 
-def get_poem(user_id, user_type):
-    ref = db.reference("/test")
-    return ref.get()
+def get_random_poem():
+    verbs = db.reference("/verbs").get()
+    poem = random.choice(verbs)
+
+    return poem

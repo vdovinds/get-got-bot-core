@@ -1,4 +1,5 @@
 import unittest
+
 import handler
 
 
@@ -14,8 +15,13 @@ class TestHandlerMethods(unittest.TestCase):
         }
         result = handler.handler(evenWithPoemAction, '')
 
-        self.assertEqual(result['body'], 'get poem')
         self.assertEqual(result['statusCode'], 200)
+        self.assertTrue('body' in result)
+        self.assertTrue('poem' in result['body'])
+        self.assertTrue('first' in result['body'])
+        self.assertTrue('second' in result['body'])
+        self.assertTrue('third' in result['body'])
+        self.assertTrue('ru' in result['body'])
 
 
 if __name__ == '__main__':
