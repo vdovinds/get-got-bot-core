@@ -26,16 +26,24 @@ firebase_admin.initialize_app(cred, {
 })
 
 
-def get_random_poem():
+def get_random_poem(user_type, user_id, user_info):
+    db.reference("/users").child(f"{user_type}_{user_id}").update(
+        {
+            "user_info": user_info
+        }
+    )
+    return get_random_poem_internal()
+
+
+def get_random_poem_internal():
     verbs = db.reference("/verbs").get()
     poem = random.choice(verbs)
 
     return poem
 
 
-def issue_task(user_type, user_id):
-    poem = get_random_poem()
-
+def issue_task(user_type, user_id, user_info):
+    poem = get_random_poem_internal()
     expected_verb_form = random.choice(['first', 'second', 'third'])
     task = {
         "first": poem['first'],
@@ -50,7 +58,8 @@ def issue_task(user_type, user_id):
         {
             "current_poem": poem,
             "expected_answer": poem[expected_verb_form],
-            "expected_verb_form": expected_verb_form
+            "expected_verb_form": expected_verb_form,
+            "user_info": user_info
         }
     )
 
