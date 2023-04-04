@@ -11,10 +11,7 @@ class TestHandlerMethods(unittest.TestCase):
                 'action': 'poem',
                 'user_id': '12345',
                 'user_type': 'test',
-                'user_info': {
-                    'login': 'test_login',
-                    'name': 'test_name'
-                }
+                'user_info': "{'login': 'test_login','name': 'test_name'}"
             }
         }
         result = handler.handler(evenWithPoemAction, '')
@@ -34,10 +31,7 @@ class TestHandlerMethods(unittest.TestCase):
                 'action': 'task',
                 'user_id': '12345',
                 'user_type': 'test',
-                'user_info': {
-                    'login': 'test_login',
-                    'name': 'test_name'
-                }
+                'user_info': "{'login': 'test_login','name': 'test_name'}"
             }
         }
         result = handler.handler(evenWithTaskAction, '')
@@ -55,10 +49,7 @@ class TestHandlerMethods(unittest.TestCase):
                 'user_id': '12345',
                 'user_type': 'test',
                 'answer': 'test',
-                'user_info': {
-                    'login': 'test_login',
-                    'name': 'test_name'
-                }
+                'user_info': "{'login': 'test_login','name': 'test_name'}"
             }
         }
         result = handler.handler(evenWithTaskAction, '')
@@ -71,10 +62,7 @@ class TestHandlerMethods(unittest.TestCase):
                 'action': 'answer',
                 'user_id': '12345',
                 'user_type': 'test',
-                'user_info': {
-                    'login': 'test_login',
-                    'name': 'test_name'
-                }
+                'user_info': "{'login': 'test_login','name': 'test_name'}"
             }
         }
         result = handler.handler(evenWithTaskAction, '')

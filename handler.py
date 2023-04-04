@@ -1,3 +1,4 @@
+import ast
 import json
 
 import main
@@ -8,9 +9,9 @@ def handler(event, context):
 
     match params["action"]:
         case 'poem':
-            return create_ok_response(main.get_random_poem(params["user_type"], params["user_id"], params["user_info"]))
+            return create_ok_response(main.get_random_poem(params["user_type"], params["user_id"], ast.literal_eval(params["user_info"])))
         case 'task':
-            return create_ok_response(main.issue_task(params["user_type"], params["user_id"], params["user_info"]))
+            return create_ok_response(main.issue_task(params["user_type"], params["user_id"], ast.literal_eval(params["user_info"])))
         case 'check':
             return create_ok_response(main.check_task(params["user_type"], params["user_id"], params["answer"]))
         case 'answer':
